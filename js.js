@@ -17,6 +17,7 @@ const internetPlans = [
     speed: "500Mbps",
     contractedSpeed: "200Mbps",
     priceRegular: "S/ 74.90",
+     priceMain: "S/ 69.90",
     priceMain: "S/ 69.90",
     extraInfo: "x 12 meses de velocidad duplicada",
   },
