@@ -1,0 +1,196 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Títulos principales */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #4B2164;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #4B2164;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Tarjeta del plan */
+.plan-card {
+    background: #FAE8EA; /* Fondo color de la tarjeta */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px; /* Relleno interno para separar el contenido de los bordes */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px; /* Separación entre tarjetas */
+}
+
+/* Grid de planes - alineación en filas */
+.plans-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Separación entre las tarjetas */
+}
+
+
+.internet-plans .plan-card,
+.dgo-tv-plans .plan-card,
+.extra-plans .plan-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 calc(33.33% - 20px); /* Tres tarjetas por fila */
+    max-width: calc(33.33% - 20px);
+   background: #FAE8EA;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Velocidades */
+.speed-display {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.speed-unit {
+    font-size: 1rem;
+    color: #555;
+}
+
+.speed-contracted {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+/* Información extra */
+.period-badge {
+    background: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+/* Logo */
+.dgo-logo {
+    width: 100px; /* Ajuste para mantener la proporción */
+    height: auto;
+    margin: 15px auto; /* Esto centra la imagen horizontalmente */
+    display: block; /* Asegura que la imagen sea tratada como un bloque */
+    object-fit: contain; /* Asegura que la imagen mantenga su proporción */
+}
+
+/* Precios */
+.price-regular {
+    font-size: 0.9rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-bottom: 5px;
+}
+
+.price-main {
+    font-size: 1.5rem;
+    color: #28a745;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.price-note {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Botón */
+.btn-want {
+    background-color: rgb(241, 132, 7);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-want:hover {
+    background-color: #0056b3;
+}
+
+/* Enlaces de contacto */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.call-link {
+    font-size: 0.9rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.call-link:hover {
+    text-decoration: underline;
+}
+
+/* Icono de WhatsApp */
+.whatsapp-icon {
+    width: 30px; /* Tamaño ajustado para el icono */
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Media Queries para dispositivos pequeños */
+@media (max-width: 768px) {
+    .internet-plans .plan-card,
+    .dgo-tv-plans .plan-card,
+    .extra-plans .plan-card {
+        flex: 1 1 100%; /* Una tarjeta por fila en móviles */
+        max-width: 100%;
+    }
+
+    /* Ajustar el tamaño de las imágenes en pantallas pequeñas */
+    .dgo-logo {
+        width: 100px; /* Ajuste para pantallas más pequeñas */
+    }
+
+    .whatsapp-icon {
+        width: 25px; /* Ajuste para iconos pequeños en móviles */
+    }
+}
