@@ -77,6 +77,7 @@ const extraPlans = [
 
 // Render de un plan
 function renderPlan(plan) {
+  const whatsappMessage = `Hola, estoy interesado en el plan de ${plan.speed} con un precio de ${plan.priceMain}. ¿Podrían darme más información?`;
   return `
     <div class="plan-card">
       ${plan.contractedSpeed ? `<div class="speed-contracted">Velocidad Contratada ${plan.contractedSpeed}</div>` : ""}
@@ -90,11 +91,11 @@ function renderPlan(plan) {
       ${plan.priceRegular ? `<div class="price-regular">Precio regular: ${plan.priceRegular}</div>` : ""}
       <div class="price-main">${plan.priceMain}</div>
       <div class="price-note">Precio con pago puntual</div>
-      <a href="https://wa.me/51925969842" target="_blank" rel="noopener noreferrer">
+      <a href="https://wa.me/51925969842?text=${encodeURIComponent(whatsappMessage)}" target="_blank" rel="noopener noreferrer">
         <button class="btn-want">Lo quiero</button>
       </a>
       <div class="contact-links">
-        <a href="https://wa.me/51925969842" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+        <a href="https://wa.me/51925969842?text=${encodeURIComponent(whatsappMessage)}" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
           <img src="images/whatsapp-icon.png" alt="WhatsApp" class="whatsapp-icon" />
         </a>
         <a href="tel:+51984889179" class="call-link">Llamar al 984889179</a>
