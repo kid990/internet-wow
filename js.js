@@ -49,7 +49,8 @@ const dgoTvPlans = [
     id: 5,
     title: "DGO TV",
     speed: "1000Mbps",
-    priceMain: "S/ 79.90",
+    priceRegular: "S/ 79.90",
+    priceMain: "S/ 74.90",
     channels: "+70 canales",
   },
 ];
