@@ -9,7 +9,7 @@ const internetPlans = [
     contractedSpeed: "100Mbps",
     priceRegular: "S/ 69.90",
     priceMain: "S/ 59.90",
-    extraInfo: "x 12 meses de velocidad duplicada",
+    extraInfo: "x 12 meses de velocidad mejorada",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const internetPlans = [
     priceRegular: "S/ 74.90",
      priceMain: "S/ 69.90",
     priceMain: "S/ 69.90",
-    extraInfo: "x 12 meses de velocidad duplicada",
+    extraInfo: "x 12 meses de velocidad mejorada",
   },
 ];
 
