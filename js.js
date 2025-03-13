@@ -32,7 +32,7 @@ const dgoTvPlans = [
     contractedSpeed: "100Mbps",
     priceRegular: "S/ 69.90",
     priceMain: "S/ 64.90",
-    channels: "+18 canales",
+    channels: "+25 canales",
     extraInfo: "+ 6 meses de velocidad mejorada",
   },
   {
@@ -42,7 +42,7 @@ const dgoTvPlans = [
     contractedSpeed: "200Mbps",
     priceRegular: "S/ 74.90",
     priceMain: "S/ 69.90",
-    channels: "+18 canales",
+    channels: "+25 canales",
     extraInfo: "+ 6 meses de velocidad mejorada",
   },
   {
@@ -51,27 +51,46 @@ const dgoTvPlans = [
     speed: "1000Mbps",
     priceRegular: "S/ 79.90",
     priceMain: "S/ 74.90",
-    channels: "+18 canales",
+    channels: "+25 canales",
+  },
+  // Nuevos planes DGO + L1MAX
+  {
+    id: 6, // Nuevo ID
+    title: "DGO + L1MAX",
+    speed: "200Mbps",
+    priceRegular: "S/ 123.90",
+    priceMain: "S/ 94.90",
+    channels: "+27 canales",
+    extraInfo: "x 6 meses de velocidad mejorada",
+  },
+  {
+    id: 7, // Nuevo ID
+    title: "DGO + L1MAX",
+    speed: "1000Mbps",
+    priceRegular: "S/ 127.90",
+    priceMain: "S/ 99.90",
+    channels: "+27 canales",
+    extraInfo: "x 6 meses de velocidad mejorada",
   },
 ];
 
 // Planes extra (DGO BÁSICO y DGO FULL)
 const extraPlans = [
   {
-    id: 6,
+    id: 8,
     title: "DGO BÁSICO",
     speed: "1000Mbps",
     priceRegular: "S/ 133.90",
     priceMain: "S/ 109.90",
-    channels: "+60 canales",
+    channels: "+70 canales",
   },
   {
-    id: 7,
+    id: 9,
     title: "DGO FULL",
     speed: "1000Mbps",
     priceRegular: "S/ 155.90",
     priceMain: "S/ 122.90",
-    channels: "+80 canales",
+    channels: "+90 canales",
   },
 ];
 
