@@ -57,7 +57,8 @@ const dgoTvPlans = [
   {
     id: 6, // Nuevo ID
     title: "DGO + L1MAX",
-    speed: "200Mbps",
+    speed: "400Mbps",
+    contractedSpeed: "200Mbps",
     priceRegular: "S/ 123.90",
     priceMain: "S/ 94.90",
     channels: "+27 canales + L1MAX",
