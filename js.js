@@ -60,7 +60,7 @@ const dgoTvPlans = [
     speed: "200Mbps",
     priceRegular: "S/ 123.90",
     priceMain: "S/ 94.90",
-    channels: "+27 canales",
+    channels: "+27 canales + L1MAX",
     extraInfo: "x 6 meses de velocidad mejorada",
   },
   {
@@ -69,7 +69,7 @@ const dgoTvPlans = [
     speed: "1000Mbps",
     priceRegular: "S/ 127.90",
     priceMain: "S/ 99.90",
-    channels: "+27 canales",
+    channels: "+27 canales + L1MAX",
     extraInfo: "x 6 meses de velocidad mejorada",
   },
 ];
