@@ -70,7 +70,7 @@ const dgoL1MaxPlans = [
     id: 7,
     title: "DGO + L1MAX",
     speed: "1000Mbps",
-    priceRegular: "S/ 127.90",
+    priceRegular: "S/ 128.90",
     priceMain: "S/ 99.90",
     channels: "+27 canales + L1MAX",
     extraInfo: "x 6 meses de velocidad mejorada",
@@ -92,7 +92,7 @@ const extraPlans = [
     title: "DGO FULL",
     speed: "1000Mbps",
     priceRegular: "S/ 155.90",
-    priceMain: "S/ 122.90",
+    priceMain: "S/ 127.90",
     channels: "+90 canales",
   },
 ];
