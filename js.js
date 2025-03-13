@@ -17,7 +17,6 @@ const internetPlans = [
     speed: "500Mbps",
     contractedSpeed: "200Mbps",
     priceRegular: "S/ 74.90",
-     priceMain: "S/ 69.90",
     priceMain: "S/ 69.90",
     extraInfo: "x 6 meses de velocidad mejorada",
   },
@@ -53,9 +52,12 @@ const dgoTvPlans = [
     priceMain: "S/ 74.90",
     channels: "+25 canales",
   },
-  // Nuevos planes DGO + L1MAX
+];
+
+// Planes DGO + L1MAX
+const dgoL1MaxPlans = [
   {
-    id: 6, // Nuevo ID
+    id: 6,
     title: "DGO + L1MAX",
     speed: "400Mbps",
     contractedSpeed: "200Mbps",
@@ -65,7 +67,7 @@ const dgoTvPlans = [
     extraInfo: "x 6 meses de velocidad mejorada",
   },
   {
-    id: 7, // Nuevo ID
+    id: 7,
     title: "DGO + L1MAX",
     speed: "1000Mbps",
     priceRegular: "S/ 127.90",
@@ -95,15 +97,25 @@ const extraPlans = [
   },
 ];
 
+// Función para obtener la categoría del plan
+function getPlanCategory(plan) {
+  if (internetPlans.includes(plan)) return "Solo INTERNET";
+  if (dgoTvPlans.includes(plan)) return "INTERNET + DGO TV";
+  if (dgoL1MaxPlans.includes(plan)) return "INTERNET + DGO + L1MAX";
+  if (extraPlans.includes(plan)) return "Planes EXTRA";
+  return "Plan desconocido";
+}
+
 // Render de un plan
 function renderPlan(plan) {
-  const whatsappMessage = `Hola, estoy interesado en el plan de ${plan.speed} con un precio de ${plan.priceMain}. ¿Podrían darme más información?`;
+  const category = getPlanCategory(plan);
+  const whatsappMessage = `Hola, estoy interesado en el plan *${category}* de *${plan.speed}* con un precio de *${plan.priceMain}*. ¿Podrían darme más información?`;
+
   return `
     <div class="plan-card">
       ${plan.contractedSpeed ? `<div class="speed-contracted">Velocidad Contratada ${plan.contractedSpeed}</div>` : ""}
       <div class="speed-display">
         ${plan.speed}
-        
       </div>
       ${plan.extraInfo ? `<div class="period-badge">${plan.extraInfo}</div>` : ""}
       <img src="images/dgo-logo.png" alt="DGO TV" class="dgo-logo" />
@@ -142,8 +154,9 @@ function renderApp() {
     <div class="container">
       <h1>Descubre los planes WOW que tenemos para ti</h1>
       ${renderSection("Planes de INTERNET", internetPlans)}
-      ${renderSection("Planes DGO TV", dgoTvPlans)}
-      ${renderSection("Planes Extra", extraPlans)}
+      ${renderSection("Planes INTERNET + DGO TV", dgoTvPlans)}
+      ${renderSection("Planes INTERNET + DGO + L1MAX", dgoL1MaxPlans)}
+      ${renderSection("Planes EXTRA", extraPlans)}
     </div>
   `;
 }
