@@ -9,6 +9,7 @@ const internetPlans = [
     contractedSpeed: "100Mbps",
     priceRegular: "S/ 69.90",
     priceMain: "S/ 59.90",
+    promo: "x 6 meses pago puntual",
     extraInfo: "x 6 meses de velocidad mejorada",
   },
   {
@@ -18,6 +19,7 @@ const internetPlans = [
     contractedSpeed: "200Mbps",
     priceRegular: "S/ 74.90",
     priceMain: "S/ 69.90",
+    promo: "x 6 meses pago puntual",
     extraInfo: "x 6 meses de velocidad mejorada",
   },
 ];
@@ -31,7 +33,8 @@ const dgoTvPlans = [
     contractedSpeed: "100Mbps",
     priceRegular: "S/ 69.90",
     priceMain: "S/ 64.90",
-    channels: "+25 canales",
+    promo: "x 6 meses pago puntual",
+    channels: "+ 25 canales",
     extraInfo: "+ 6 meses de velocidad mejorada",
   },
   {
@@ -41,16 +44,18 @@ const dgoTvPlans = [
     contractedSpeed: "200Mbps",
     priceRegular: "S/ 74.90",
     priceMain: "S/ 69.90",
-    channels: "+25 canales",
+    promo: "x 6 meses pago puntual",
+    channels: "+ 25 canales",
     extraInfo: "+ 6 meses de velocidad mejorada",
   },
   {
-    id: 5,
+    id: 5, // ESTE NO TIENE VELOCIDAD PROMOCIONAL
     title: "DGO TV",
     speed: "1000Mbps",
     priceRegular: "S/ 79.90",
     priceMain: "S/ 74.90",
-    channels: "+25 canales",
+    promo: "x 6 meses pago puntual",
+    channels: "+ 25 canales",
   },
 ];
 
@@ -63,37 +68,40 @@ const dgoL1MaxPlans = [
     contractedSpeed: "200Mbps",
     priceRegular: "S/ 123.90",
     priceMain: "S/ 94.90",
-    channels: "+27 canales + L1MAX",
+    promo: "x 6 meses pago puntual",
+    channels: "+ 27 canales + L1MAX",
     extraInfo: "x 6 meses de velocidad mejorada",
   },
   {
-    id: 7,
+    id: 7, // ESTE NO TIENE VELOCIDAD PROMOCIONAL
     title: "DGO + L1MAX",
     speed: "1000Mbps",
-    priceRegular: "S/ 128.90",
+    priceRegular: "S/ 127.90",
     priceMain: "S/ 99.90",
-    channels: "+27 canales + L1MAX",
-    extraInfo: "x 6 meses de velocidad mejorada",
+    promo: "x 6 meses pago puntual",
+    channels: "+ 27 canales + L1MAX",
   },
 ];
 
 // Planes extra (DGO BÁSICO y DGO FULL)
 const extraPlans = [
   {
-    id: 8,
+    id: 8, // ESTE NO TIENE VELOCIDAD PROMOCIONAL
     title: "DGO BÁSICO",
     speed: "1000Mbps",
     priceRegular: "S/ 133.90",
     priceMain: "S/ 109.90",
-    channels: "+70 canales",
+    promo: "x 6 meses pago puntual",
+    channels: "+ 70 canales",
   },
   {
-    id: 9,
+    id: 9, // ESTE NO TIENE VELOCIDAD PROMOCIONAL
     title: "DGO FULL",
     speed: "1000Mbps",
     priceRegular: "S/ 155.90",
-    priceMain: "S/ 127.90",
-    channels: "+90 canales",
+    priceMain: "S/ 122.90",
+    promo: "x 6 meses pago puntual",
+    channels: "+ 90 canales",
   },
 ];
 
@@ -106,23 +114,43 @@ function getPlanCategory(plan) {
   return "Plan desconocido";
 }
 
+// Generar mensaje de WhatsApp
+function generateWhatsAppMessage(plan) {
+  const category = getPlanCategory(plan);
+  const realPlan = `${plan.speed} ${plan.channels ? " "+ plan.channels : ""} - ${plan.priceRegular}`;
+
+  // Si el plan NO tiene velocidad promocional, solo muestra el precio promocional
+  if ([5, 7, 8, 9].includes(plan.id)) {
+    return `Hola, estoy interesado en el plan *${category}*.\n` +
+        `Plan real: ${realPlan}.\n` +
+        `Precio promocional x 6 meses con pago puntual: ${plan.priceMain}.\n` +
+        `Quiero adquirir ese plan. ¿Podrían darme más información?`;
+  }
+
+  // Si el plan TIENE velocidad promocional, muestra ambos detalles
+  const promoPlan = `${plan.speed} ${plan.channels ? "+ " + plan.channels : ""} - ${plan.priceMain} x 6 meses con pago puntual`;
+
+  return `Hola, estoy interesado en el plan *${category}*.\n` +
+      `Plan real: ${realPlan}.\n` +
+      `Plan promocional x 6 meses: ${promoPlan}.\n` +
+      `Quiero adquirir ese plan.`;
+}
+
 // Render de un plan
 function renderPlan(plan) {
-  const category = getPlanCategory(plan);
-  const whatsappMessage = `Hola, estoy interesado en el plan *${category}* de *${plan.speed}* con un precio de *${plan.priceMain}*. ¿Podrían darme más información?`;
+  const whatsappMessage = generateWhatsAppMessage(plan);
 
   return `
     <div class="plan-card">
       ${plan.contractedSpeed ? `<div class="speed-contracted">Velocidad Contratada ${plan.contractedSpeed}</div>` : ""}
-      <div class="speed-display">
-        ${plan.speed}
-      </div>
+      <div class="speed-display">${plan.speed}</div>
       ${plan.extraInfo ? `<div class="period-badge">${plan.extraInfo}</div>` : ""}
+      ${plan.promo ? `<div class="promo-badge">${plan.promo}</div>` : ""}
       <img src="images/dgo-logo.png" alt="DGO TV" class="dgo-logo" />
       <div class="channels-text">${plan.channels || ""}</div>
       ${plan.priceRegular ? `<div class="price-regular">Precio regular: ${plan.priceRegular}</div>` : ""}
       <div class="price-main">${plan.priceMain}</div>
-      <div class="price-note">Precio con pago puntual</div>
+      <div class="price-note">X 6 meses con pago puntual</div>
       <a href="https://wa.me/51984889179?text=${encodeURIComponent(whatsappMessage)}" target="_blank" rel="noopener noreferrer">
         <button class="btn-want">Lo quiero</button>
       </a>
