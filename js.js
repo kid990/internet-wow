@@ -115,25 +115,25 @@ function getPlanCategory(plan) {
 }
 
 // Generar mensaje de WhatsApp
+// Función para generar el mensaje de WhatsApp
 function generateWhatsAppMessage(plan) {
   const category = getPlanCategory(plan);
-  const realPlan = `${plan.speed} ${plan.channels ? " "+ plan.channels : ""} - ${plan.priceRegular}`;
+  const realSpeed = plan.contractedSpeed || plan.speed;
+  const realPrice = plan.priceRegular;
+  const promoSpeed = plan.contractedSpeed ? plan.speed : null;
+  const promoPrice = plan.priceMain;
 
-  // Si el plan NO tiene velocidad promocional, solo muestra el precio promocional
-  if ([5, 7, 8, 9].includes(plan.id)) {
-    return `Hola, estoy interesado en el plan *${category}*.\n` +
-        `Plan real: ${realPlan}.\n` +
-        `Precio promocional x 6 meses con pago puntual: ${plan.priceMain}.\n` +
-        `Quiero adquirir ese plan. ¿Podrían darme más información?`;
+  let message = `Hola, estoy interesado en el plan *${category}*.
+Plan real: ${realSpeed}${plan.channels ? "  " + plan.channels : ""} - ${realPrice}.`;
+
+  if (promoSpeed) {
+    message += `\nPlan promocional x 6 meses: ${promoSpeed}${plan.channels ? " + " + plan.channels : ""} - ${promoPrice} x 6 meses con pago puntual.`;
+  } else {
+    message += `\nPrecio promocional x 6 meses con pago puntual: ${promoPrice}.`;
   }
 
-  // Si el plan TIENE velocidad promocional, muestra ambos detalles
-  const promoPlan = `${plan.speed} ${plan.channels ? "+ " + plan.channels : ""} - ${plan.priceMain} x 6 meses con pago puntual`;
-
-  return `Hola, estoy interesado en el plan *${category}*.\n` +
-      `Plan real: ${realPlan}.\n` +
-      `Plan promocional x 6 meses: ${promoPlan}.\n` +
-      `Quiero adquirir ese plan.`;
+  message += "\nQuiero adquirir ese plan.";
+  return message;
 }
 
 // Render de un plan
