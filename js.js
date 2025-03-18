@@ -141,7 +141,7 @@ Plan real: ${realSpeed}${plan.channels ? "  " + plan.channels : ""} - ${realPric
 function renderPlan(plan) {
   const whatsappMessage = generateWhatsAppMessage(plan);
   const isInternetPlan = internetPlans.includes(plan);
-  const planImage = isInternetPlan ? "images/wifi.png" : "images/dgo-logo.png";
+  const planImage = isInternetPlan ? "wifi.jpeg" : "images/dgo-logo.png";
 
   return `
     <div class="plan-card">
@@ -149,7 +149,7 @@ function renderPlan(plan) {
       <div class="speed-display">${plan.speed}</div>
       ${plan.extraInfo ? `<div class="period-badge">${plan.extraInfo}</div>` : ""}
       ${plan.promo ? `<div class="promo-badge">${plan.promo}</div>` : ""}
-      <img src="${planImage}" alt="${plan.title}" class="plan-logo" />
+      <img src="${planImage}" alt="${plan.title}" class="dgo-logo" />
       <div class="channels-text">${plan.channels || ""}</div>
       ${plan.priceRegular ? `<div class="price-regular">Precio regular: ${plan.priceRegular}</div>` : ""}
       <div class="price-main">${plan.priceMain}</div>
