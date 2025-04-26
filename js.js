@@ -148,12 +148,13 @@ function renderPlan(plan) {
       ${plan.contractedSpeed ? `<div class="speed-contracted">Velocidad Contratada ${plan.contractedSpeed}</div>` : ""}
       <div class="speed-display">${plan.speed}</div>
       ${plan.extraInfo ? `<div class="period-badge">${plan.extraInfo}</div>` : ""}
-      ${plan.promo ? `<div class="promo-badge">${plan.promo}</div>` : ""}
+      
       <img src="${planImage}" alt="${plan.title}" class="dgo-logo" />
       <div class="channels-text">${plan.channels || ""}</div>
       ${plan.priceRegular ? `<div class="price-regular">Precio regular: ${plan.priceRegular}</div>` : ""}
       <div class="price-main">${plan.priceMain}</div>
-      <div class="price-note">X 6 meses con pago puntual</div>
+      ${plan.promo ? `<div class="price-note"> ${plan.promo}</div>` : ""}
+
       <a href="https://wa.me/51984889179?text=${encodeURIComponent(whatsappMessage)}" target="_blank" rel="noopener noreferrer">
         <button class="btn-want">Lo quiero</button>
       </a>
